@@ -1,0 +1,31 @@
+name: Test and Install Dependencies
+
+on: [push]
+
+jobs:
+  test-and-install:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository content
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run tests
+        run: |
+          echo "Running automated tests..."
+          # Ajoutez ici vos propres commandes pour exécuter les tests
+          # Ex: pytest, unittest, etc.
+          echo "Tests completed!"
+
+      - name: Re-install dependencies after tests
+        run: |
+          pip install -r requirements.txt
