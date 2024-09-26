@@ -1,0 +1,28 @@
+name: Run Python Tests
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Étape 1 : Vérifier le dépôt
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Étape 2 : Configurer Python
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.x"
+
+      # Étape 3 : Installer les dépendances
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      # Étape 4 : Exécuter les tests
+      - name: Run tests
+        run: |
+          python -m unittest test_sum.py
