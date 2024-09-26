@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: "3.x"
 
-      # Étape 3 : Installer les dépendances
+      # Étape 3 : Installer les dépendances (sans unittest)
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
